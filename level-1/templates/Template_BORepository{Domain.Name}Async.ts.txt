@@ -1,0 +1,58 @@
+/**
+ * @license
+ * Copyright Color-Coding Studio. All Rights Reserved.
+ *
+ * Use of this source code is governed by an Apache License, Version 2.0
+ * that can be found in the LICENSE file at http://www.apache.org/licenses/LICENSE-2.0
+ */
+export class BORepository${Domain.getName()}Async extends ${Domain.getName().toLowerCase()}.bo.BORepository${Domain.getName()} {
+    /** 构造方法 */
+    constructor(action?: integration.action.IntegrationAction, type?: integration.action.emSourceTarget) {
+        super();
+        // 改变仓库信息
+        if (integration && integration.action) {
+            integration.action.changeRepositoryInfo(this, action, type);
+        }
+    }
+$BEGIN_BO$
+    /**
+     * 查询 ${BO.getDescription()}
+     * @param criteria 查询条件
+     */
+    async fetch${BO.getName()}Async(criteria: ibas.Criteria):
+        Promise<ibas.OperationResult<${Domain.getName().toLowerCase()}.bo.${BO.getName()}>> {
+        return new Promise<ibas.OperationResult<${Domain.getName().toLowerCase()}.bo.${BO.getName()}>>(resolve => {
+            try {
+                this.fetch${BO.getName()}({
+                    criteria: criteria,
+                    onCompleted(opRslt: ibas.OperationResult<${Domain.getName().toLowerCase()}.bo.${BO.getName()}>): void {
+                        return resolve(opRslt);
+                    }
+                });
+            } catch (error) {
+                return resolve(new ibas.OperationResult<${Domain.getName().toLowerCase()}.bo.${BO.getName()}>(error));
+            }
+        });
+    }
+    /**
+     * 保存 ${BO.getDescription()}
+     * @param beSaved 保存对象
+     */
+    async save${BO.getName()}Async(beSaved: ${Domain.getName().toLowerCase()}.bo.${BO.getName()}):
+        Promise<ibas.OperationResult<${Domain.getName().toLowerCase()}.bo.${BO.getName()}>> {
+        return new Promise<ibas.OperationResult<${Domain.getName().toLowerCase()}.bo.${BO.getName()}>>(resolve => {
+            try {
+                this.save${BO.getName()}({
+                    beSaved: beSaved,
+                    onCompleted(opRslt: ibas.OperationResult<${Domain.getName().toLowerCase()}.bo.${BO.getName()}>): void {
+                        return resolve(opRslt);
+                    }
+                });
+            } catch (error) {
+                return resolve(new ibas.OperationResult<${Domain.getName().toLowerCase()}.bo.${BO.getName()}>(error));
+            }
+        });
+    }
+$END_BO$
+
+}
