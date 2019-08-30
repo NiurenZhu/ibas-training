@@ -1,5 +1,10 @@
 # folder
-*/ibas_tools/*
+level-1/ibas_tools/**
+scripts/**
 
 # temporary file
 ~*
+*~
+
+# mac files
+.DS_Store

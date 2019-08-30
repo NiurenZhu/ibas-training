@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Domain>
+<Domain Name="Shopping" ShortName="SP">
+  <Model Name="ShoppingOrder" Description="购物订单" ModelType="Document" Mapped="AVA_SP_ORDR">
+    <Property Name="U_Alphanumeric" Description="字母数字" DataType="Alphanumeric" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Date" Description="日期" DataType="Date" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Time" Description="时间" DataType="Date" DataSubType="Time" EditSize="8" />
+    <Property Name="U_Numeric" Description="整数" DataType="Numeric" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Quantity" Description="小数" DataType="Decimal" DataSubType="Quantity" EditSize="8" />
+  </Model>
+  <BusinessObject MappedModel="ShoppingOrder" ShortName="AVA_SP_SHOPORDER">
+  </BusinessObject>
+  <Model Name="SalesOrder" Description="销售订单" ModelType="Document" Mapped="AVA_SL_ORDR">
+    <Property Name="U_Alphanumeric" Description="字母数字" DataType="Alphanumeric" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Date" Description="日期" DataType="Date" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Time" Description="时间" DataType="Date" DataSubType="Time" EditSize="8" />
+    <Property Name="U_Numeric" Description="整数" DataType="Numeric" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Quantity" Description="小数" DataType="Decimal" DataSubType="Quantity" EditSize="8" />
+  </Model>
+  <Model Name="SalesOrderItem" Description="销售订单-行" ModelType="Document" Mapped="AVA_SL_RDR1">
+    <Property Name="U_Alphanumeric" Description="字母数字" DataType="Alphanumeric" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Date" Description="日期" DataType="Date" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Time" Description="时间" DataType="Date" DataSubType="Time" EditSize="8" />
+    <Property Name="U_Numeric" Description="整数" DataType="Numeric" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Quantity" Description="小数" DataType="Decimal" DataSubType="Quantity" EditSize="8" />
+  </Model>
+  <BusinessObject MappedModel="SalesOrder" ShortName="AVA_SL_SALESORDER">
+    <RelatedBO Relation="OneToMany" MappedModel="SalesOrderItem"/>
+  </BusinessObject>
+  <Model Name="ChannelOrder" Description="渠道订单" ModelType="Document" Mapped="AVA_CH_ORDR">
+    <Property Name="U_Alphanumeric" Description="字母数字" DataType="Alphanumeric" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Date" Description="日期" DataType="Date" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Time" Description="时间" DataType="Date" DataSubType="Time" EditSize="8" />
+    <Property Name="U_Numeric" Description="整数" DataType="Numeric" DataSubType="Default" EditSize="8" />
+    <Property Name="U_Quantity" Description="小数" DataType="Decimal" DataSubType="Quantity" EditSize="8" />
+  </Model>
+  <BusinessObject MappedModel="ChannelOrder" ShortName="AVA_CH_CHANNELORDER">
+  </BusinessObject>
+</Domain>
